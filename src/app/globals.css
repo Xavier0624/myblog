@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "highlight.js/styles/github.css";
+@import "highlight.js/styles/github-dark.css" (prefers-color-scheme: dark);
 
 @plugin "@tailwindcss/typography";
 
@@ -8,4 +10,9 @@
 
 body {
   font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+}
+
+/* highlight.js override: let prose handle code font size */
+.prose pre code.hljs {
+  font-size: inherit;
 }

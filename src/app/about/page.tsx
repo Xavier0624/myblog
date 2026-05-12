@@ -1,16 +1,14 @@
 import Image from "next/image";
+import { getAuthor } from "@/lib/author";
 
 export default function AboutPage() {
-  const socialLinks = [
-    { label: "GitHub", url: "https://github.com" },
-    { label: "Twitter", url: "https://twitter.com" },
-  ];
+  const author = getAuthor();
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-16 sm:py-24">
+    <div className="max-w-3xl mx-auto px-6 py-16 sm:py-24">
       <div className="flex flex-col sm:flex-row items-start gap-8">
         <Image
-          src="/avatar.webp"
+          src={author.avatar}
           alt="头像"
           width={96}
           height={96}
@@ -19,14 +17,14 @@ export default function AboutPage() {
 
         <div className="flex-1">
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            Xavier
+            {author.name}
           </h1>
           <p className="mt-4 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            华东师范大学软件工程大三在读。
+            {author.bio}
           </p>
 
           <div className="mt-6 flex gap-4">
-            {socialLinks.map((link) => (
+            {author.socialLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.url}
